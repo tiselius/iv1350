@@ -69,7 +69,6 @@ class Main {
 
   class Controller {
 
-    public 
 
     public boolean getItem(int id) {
 
