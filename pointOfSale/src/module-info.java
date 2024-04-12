@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author arontiselius
+ *
+ */
+module pointOfSale {
+}
