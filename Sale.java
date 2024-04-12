@@ -12,8 +12,9 @@ class Main {
     this.controller = new Controller();
     this.inventoryHandler = new InventoryHandler();
     this.view = new View();
-
   }
+
+
 
   class Item {
     Product product;
