@@ -1,22 +1,26 @@
 package controller;
 
 import integration.AccountingHandler;
+import integration.DiscountHandler;
 import integration.InventoryHandler;
 import integration.PrinterHandler;
 import model.Item;
 import model.Product;
 import model.Receipt;
 import model.Sale;
+import model.Sale.SaleDTO;
 
 public class Controller {
 	InventoryHandler inventoryHandler = new InventoryHandler();
 	AccountingHandler accountingHandler = new AccountingHandler();
 	PrinterHandler printerHandler = new PrinterHandler();
+	DiscountHandler discountHandler = new DiscountHandler();
 	public Sale sale;
 	
-	public Sale startSale() {
+	public SaleDTO startSale() {
 		sale = new Sale();
-		return sale;
+
+		return sale.makeDTO();
 	}
 	public void endSale() {
 		sale.endSale();
@@ -26,16 +30,18 @@ public class Controller {
         Product product = inventoryHandler.getProduct(id);
 
         if (product == null) {
+					throw new InvalidException("Product not found");
           System.out.println("ERROR HERE"); //throw error
         }
 
         sale.addProduct(product);
 
-        System.out.println("Added " + product.itemDescription);
+        System.out.println("Added: " + product.name);
         return sale;
       }
     
     public Sale setQuantity(Item item, int quantity) {
+
     	sale.setQuantity(item, quantity);
     	return sale;
     }

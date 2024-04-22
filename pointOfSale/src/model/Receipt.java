@@ -2,6 +2,7 @@ package model;
 
 import java.util.Date;
 
+
 public class Receipt {
 
 	private float cashPaid; 
@@ -13,13 +14,21 @@ public class Receipt {
 	private float totalDiscount;
 	private float amountToPay;
 
+	
 
 
 	public Receipt(Sale sale, float cashPaid) {
 		this.cashPaid = cashPaid;
 		this.customerId = sale.getCustomerId();
 		timeOfSale = new Date();
+
+
 	}
+
+	public float getChange() {
+		return change;
+	}
+
 
 
 	@Override public String toString() {

@@ -3,6 +3,32 @@ package model;
 import java.util.ArrayList;
 
 public class Sale {
+
+	//SaleDTO
+	public class SaleDTO{
+		public ArrayList<Item> items;
+		public float runningTotal;
+		public boolean saleEnded;
+		public int customerId;
+		public float discountAmount;
+	
+		public SaleDTO(Sale sale) {
+			this.items = sale.items;
+			this.runningTotal = sale.runningTotal;
+			this.saleEnded = sale.saleEnded;
+			this.customerId = sale.customerId;
+			this.discountAmount = sale.discountAmount;
+		}
+
+
+
+	}
+
+	public SaleDTO makeDTO(){
+		return new SaleDTO(this);
+	}
+
+
 	ArrayList<Item> items = new ArrayList<Item>();
 	private float runningTotal = 0;
 	private boolean saleEnded = false;
@@ -18,6 +44,8 @@ public class Sale {
 			item.incrementQuantity();
 		calculateRunningTotal();
 	}
+
+
 
 	private Item getItem(Product product) {
 		for (Item item : items) {
