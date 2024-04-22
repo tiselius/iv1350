@@ -32,8 +32,10 @@ public class Sale {
 	private void calculateRunningTotal() {
 		this.runningTotal = 0;
 		for (Item item : items) {
-			this.runningTotal += item.getProduct().price * item.getQuantity(); // Borde vi ha en totalprice i item som är price *
-																		// quantity?
+			this.runningTotal += item.getProduct().getPrice() * item.getQuantity(); // Borde vi ha en totalprice i item
+																					// som
+			// är price *
+			// quantity?
 		}
 	}
 

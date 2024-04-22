@@ -16,8 +16,8 @@ public class DiscountHandler {
     float discount = 0;
 
     for (Item item : items) {
-      if (item.getProduct().id == 123) {
-        discount += item.getProduct().price * item.getQuantity() * 0.1;
+      if (item.getProduct().getId() == 123) {
+        discount += item.getProduct().getPrice() * item.getQuantity() * 0.1;
       }
       // Real system has more discount rules
     }

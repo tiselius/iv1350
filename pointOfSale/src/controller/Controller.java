@@ -29,14 +29,16 @@ public class Controller {
 		sale = new Sale();
 	}
 
-	public void endSale() {
+	public SaleDTO endSale() {
 		sale.endSale();
+		return new SaleDTO(sale);
 
 	}
 
 	public SaleDTO getDiscount(int customerId) {
 		float discount = discountHandler.getDiscountAmount(customerId, sale);
 		sale.applyDiscount(discount);
+		sale.setCustomerId(customerId);
 
 		return new SaleDTO(sale);
 	}
@@ -51,7 +53,7 @@ public class Controller {
 
 		sale.addProduct(product);
 
-		System.out.println("Added: " + product.name);
+		System.out.println("Added: " + product.getName());
 		return new SaleDTO(sale);
 	}
 
@@ -61,13 +63,13 @@ public class Controller {
 		return new SaleDTO(sale);
 	}
 
-	public float makePayment(float cashPaid) {
+	public Receipt makePayment(float cashPaid) {
 		Receipt receipt = new Receipt(new SaleDTO(sale), cashPaid);
 		accountingHandler.postReceipt(receipt);
 		inventoryHandler.postReceipt(receipt);
 		printerHandler.postReceipt(receipt);
 		System.out.println(receipt.toString());
-		return receipt.change;
+		return receipt;
 	}
 
 }
