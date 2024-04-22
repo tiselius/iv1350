@@ -1,57 +1,73 @@
 package controller;
 
+import dto.ProductDTO;
 import integration.AccountingHandler;
 import integration.DiscountHandler;
 import integration.InventoryHandler;
 import integration.PrinterHandler;
 import model.Item;
-import model.Product;
 import model.Receipt;
 import model.Sale;
-import model.Sale.SaleDTO;
+import dto.SaleDTO;
 
 public class Controller {
-	InventoryHandler inventoryHandler = new InventoryHandler();
-	AccountingHandler accountingHandler = new AccountingHandler();
-	PrinterHandler printerHandler = new PrinterHandler();
-	DiscountHandler discountHandler = new DiscountHandler();
+	private InventoryHandler inventoryHandler;
+	private AccountingHandler accountingHandler;
+	private PrinterHandler printerHandler;
+	private DiscountHandler discountHandler;
 	public Sale sale;
-	
-	public SaleDTO startSale() {
-		sale = new Sale();
 
-		return sale.makeDTO();
+	public Controller(InventoryHandler inventoryHandler, AccountingHandler accountingHandler,
+			PrinterHandler printerHandler, DiscountHandler discountHandler) {
+		this.inventoryHandler = inventoryHandler;
+		this.accountingHandler = accountingHandler;
+		this.printerHandler = printerHandler;
+		this.discountHandler = discountHandler;
 	}
+
+	public void startSale() {
+		sale = new Sale();
+	}
+
 	public void endSale() {
 		sale.endSale();
+
 	}
-	
-    public Sale inputProduct(int id) {
-        Product product = inventoryHandler.getProduct(id);
 
-        if (product == null) {
-					throw new InvalidException("Product not found");
-          System.out.println("ERROR HERE"); //throw error
-        }
+	public SaleDTO getDiscount(int customerId) {
+		float discount = discountHandler.getDiscountAmount(customerId, sale);
+		sale.applyDiscount(discount);
 
-        sale.addProduct(product);
+		return new SaleDTO(sale);
+	}
 
-        System.out.println("Added: " + product.name);
-        return sale;
-      }
-    
-    public Sale setQuantity(Item item, int quantity) {
+	public SaleDTO inputProduct(int id) {
+		ProductDTO product = inventoryHandler.getProduct(id);
 
-    	sale.setQuantity(item, quantity);
-    	return sale;
-    }
-    
-    public float makePayment(float cashPaid) {
-    	Receipt receipt = new Receipt(sale, cashPaid);
-    	accountingHandler.postReceipt(receipt);
-    	inventoryHandler.postReceipt(receipt);
-    	printerHandler.postReceipt(receipt);
-		return sale.getRunningTotal() - cashPaid;
-    }
-	
+		if (product == null) {
+			// throw new InvalidException("Product not found");
+			System.out.println("ERROR HERE"); // throw error
+		}
+
+		sale.addProduct(product);
+
+		System.out.println("Added: " + product.name);
+		return new SaleDTO(sale);
+	}
+
+	public SaleDTO setQuantity(Item item, int quantity) {
+
+		sale.setQuantity(item, quantity);
+		return new SaleDTO(sale);
+	}
+
+	public float makePayment(float cashPaid) {
+		Receipt receipt = new Receipt(new SaleDTO(sale), cashPaid);
+		accountingHandler.postReceipt(receipt);
+		inventoryHandler.postReceipt(receipt);
+		printerHandler.postReceipt(receipt);
+		System.out.println(receipt.toString());
+		return receipt.change;
+	}
+
 }

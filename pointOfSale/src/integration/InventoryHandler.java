@@ -1,19 +1,20 @@
 package integration;
 
 import java.util.ArrayList;
-import model.Product;
+
+import dto.ProductDTO;
 import model.Receipt;
 
 public class InventoryHandler {
-    ArrayList<Product> products = new ArrayList<Product>();
+    ArrayList<ProductDTO> products = new ArrayList<ProductDTO>();
 
     public InventoryHandler() {
-        products.add(new Product(123, 10, 12, "apple"));
-        products.add(new Product(321, 5, 12, "banana"));
+        products.add(new ProductDTO(123, 10, 12, "apple"));
+        products.add(new ProductDTO(321, 5, 12, "banana"));
     }
 	// search database, return product
-	public Product getProduct(int id) {
-		for(Product product : this.products) {
+	public ProductDTO getProduct(int id) {
+		for(ProductDTO product : this.products) {
 			if(product.id == id)
 				return product;
 		}

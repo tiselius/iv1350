@@ -1,33 +1,41 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import dto.SaleDTO;
 
 
 public class Receipt {
 
-	private float cashPaid; 
-	private Date timeOfSale;
-	private int customerId;
-	private float change;
-	private float totalVat;
-	private float totalCost;
-	private float totalDiscount;
-	private float amountToPay;
-
+	public float cashPaid; 
+	public Date timeOfSale;
+	public SaleDTO saleDTO;
+	public float change;
+	public float totalVat;
+	public float amountToPay;
 	
 
 
-	public Receipt(Sale sale, float cashPaid) {
+	public Receipt(SaleDTO sale, float cashPaid) {
 		this.cashPaid = cashPaid;
-		this.customerId = sale.getCustomerId();
-		timeOfSale = new Date();
+		this.timeOfSale = new Date();
+		this.saleDTO = sale;
+		this.totalVat = itemsToVat(sale.items);
+		this.amountToPay = sale.runningTotal - sale.discountAmount;
+		this.change = cashPaid - amountToPay;
+
 
 
 	}
 
-	public float getChange() {
-		return change;
+	private float itemsToVat(ArrayList<Item> items) {
+		totalVat = 0;
+		for(Item item : items) {
+			totalVat += item.getProduct().vatRate * item.getQuantity();
+		}
+		return totalVat;
 	}
+
 
 
 
