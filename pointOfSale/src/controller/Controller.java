@@ -30,8 +30,8 @@ public class Controller {
         Product product = inventoryHandler.getProduct(id);
 
         if (product == null) {
-					throw new InvalidException("Product not found");
           System.out.println("ERROR HERE"); //throw error
+          return null;
         }
 
         sale.addProduct(product);
