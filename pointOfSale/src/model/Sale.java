@@ -2,40 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
+import dto.ProductDTO;
+
 public class Sale {
-
-	//SaleDTO
-	public class SaleDTO{
-		public ArrayList<Item> items;
-		public float runningTotal;
-		public boolean saleEnded;
-		public int customerId;
-		public float discountAmount;
-	
-		public SaleDTO(Sale sale) {
-			this.items = sale.items;
-			this.runningTotal = sale.runningTotal;
-			this.saleEnded = sale.saleEnded;
-			this.customerId = sale.customerId;
-			this.discountAmount = sale.discountAmount;
-		}
-
-
-
-	}
-
-	public SaleDTO makeDTO(){
-		return new SaleDTO(this);
-	}
-
-
 	ArrayList<Item> items = new ArrayList<Item>();
 	private float runningTotal = 0;
 	private boolean saleEnded = false;
 	private int customerId;
 	private float discountAmount;
 
-	public void addProduct(Product product) {
+	public void addProduct(ProductDTO product) {
 		Item item = getItem(product);
 		if (item == null) {
 			item = new Item(product);
@@ -45,11 +21,9 @@ public class Sale {
 		calculateRunningTotal();
 	}
 
-
-
-	private Item getItem(Product product) {
+	private Item getItem(ProductDTO product) {
 		for (Item item : items) {
-			if (item.product.equals(product))
+			if (item.getProduct().equals(product))
 				return item;
 		}
 		return null;
@@ -58,13 +32,15 @@ public class Sale {
 	private void calculateRunningTotal() {
 		this.runningTotal = 0;
 		for (Item item : items) {
-			this.runningTotal += item.product.price * item.quantity; // Borde vi ha en totalprice i item som är price *
-																																// quantity?
+			this.runningTotal += item.getProduct().getPrice() * item.getQuantity(); // Borde vi ha en totalprice i item
+																					// som
+			// är price *
+			// quantity?
 		}
 	}
 
 	public void setQuantity(Item item, int quantity) {
-		item.quantity = quantity;
+		item.setQuantity(quantity);
 		this.calculateRunningTotal();
 
 	}
@@ -97,8 +73,12 @@ public class Sale {
 		return items;
 	}
 
-	public int getCustomerId	() {
+	public int getCustomerId() {
 		return customerId;
+	}
+
+	public boolean getSaleEnded() {
+		return saleEnded;
 	}
 
 }

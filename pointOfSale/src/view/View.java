@@ -1,24 +1,34 @@
 package view;
 
 import controller.Controller;
+import dto.SaleDTO;
+import model.Receipt;
 
 public class View {
 
 	Controller controller;
+
 	public View(Controller controller) {
 		this.controller = controller;
 	}
+
 	public void test() {
 		controller.startSale();
-		controller.inputProduct(123);
-		System.out.println("running total: " + controller.sale.getRunningTotal());
-		controller.inputProduct(321);
-		System.out.println("running total: " + controller.sale.getRunningTotal());
-		controller.endSale();
-		float change = controller.makePayment(20);
-		System.out.println("change to give back: " + change);
-		
-		
+		SaleDTO sale = controller.inputProduct(123);
+		sale.print();
+		sale = controller.inputProduct(321);
+		sale.print();
+		// maybe fix
+		controller.setQuantity(sale.getItems().get(0), 5);
+		sale.print();
+		sale = controller.endSale();
+		sale.print();
+		sale = controller.getDiscount(123);
+		sale.print();
+		Receipt receipt = controller.makePayment(45);
+
+		receipt.print();
+
 	}
-	
+
 }
