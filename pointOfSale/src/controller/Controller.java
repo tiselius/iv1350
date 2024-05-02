@@ -18,6 +18,9 @@ public class Controller {
 	private AccountingHandler accountingHandler;
 	private PrinterHandler printerHandler;
 	private DiscountHandler discountHandler;
+	/**
+	 * The current Sale that the Controller handles.
+	 */
 	public Sale sale;
 
 	/**
@@ -102,7 +105,6 @@ public class Controller {
 	public SaleDTO setQuantity(Item item, int quantity) {
 		sale.setQuantity(item, quantity);
 		SaleDTO dto = new SaleDTO(sale);
-		System.out.println("Set quantity: " + quantity + " for product: " + item.getProduct().getName());
 		return dto;
 	}
 

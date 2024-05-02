@@ -29,7 +29,6 @@ public class View {
 		sale.print();
 		sale = controller.inputProduct(321);
 		sale.print();
-		// maybe fix
 		sale = controller.setQuantity(sale.getItems().get(0), 5);
 		sale.print();
 		sale = controller.endSale();
