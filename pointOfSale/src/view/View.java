@@ -21,7 +21,7 @@ public class View {
 	}
 
 	/**
-	 * Runs the test
+	 * Runs a test execution of the program.
 	 */
 	public void test() {
 		controller.startSale();
