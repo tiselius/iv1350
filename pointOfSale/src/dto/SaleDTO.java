@@ -77,12 +77,11 @@ public class SaleDTO {
      */
 
     public void print() {
-        System.out.println("runningTotal: " + runningTotal);
-        System.out.println("saleEnded: " + saleEnded);
-        System.out.println("customerId: " + customerId);
-        System.out.println("discountAmount: " + discountAmount);
-        System.out.println("Item" + "   " + "Quantity" + "   " +
-                "Price" + "   " + "Total");
+        System.out.println("Total price: " + runningTotal);
+        System.out.println("CustomerId: " + customerId);
+        System.out.println("DiscountAmount: " + discountAmount);
+        System.out.printf("%-15s %-8s %-8s %-8s\n", "Item", "Quantity", "Price", "Total");
+
         for (Item item : items) {
             item.print();
         }

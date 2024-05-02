@@ -1,6 +1,6 @@
 package startup;
 
-import controller.Controller;
+import controller.*;
 import integration.*;
 import view.View;
 

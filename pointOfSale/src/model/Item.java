@@ -13,10 +13,8 @@ public class Item {
 	 * Prints the item to the console
 	 */
 	public void print() {
-		System.out.println(product.getName() + "   " + quantity + "   " +
-				product.getPrice() + "   " + product.getPrice() * quantity);
+	    System.out.printf("%-15s %-8d %-8.2f %-8.2f\n", product.getName(), quantity, product.getPrice(), product.getPrice() * quantity);
 	}
-
 	/**
 	 * Creates a new instance of an item
 	 * 

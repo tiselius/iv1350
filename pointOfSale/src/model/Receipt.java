@@ -49,7 +49,7 @@ public class Receipt {
 		System.out.println("Time of sale: " + timeOfSale);
 		System.out.println("Cash paid: " + cashPaid);
 		System.out.println("Amount to pay: " + amountToPay);
-		System.out.println("Change: " + change);
+		System.out.printf("Change: %5.2f%n", change);
 		System.out.println("Total VAT: " + totalVat);
 		saleDTO.print();
 	}
