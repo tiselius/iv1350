@@ -102,6 +102,7 @@ public class Controller {
 	public SaleDTO setQuantity(Item item, int quantity) {
 		sale.setQuantity(item, quantity);
 		SaleDTO dto = new SaleDTO(sale);
+		System.out.println("Set quantity: " + quantity + " for product: " + item.getProduct().getName());
 		return dto;
 	}
 

@@ -33,7 +33,6 @@ public class View {
 		sale = controller.setQuantity(sale.getItems().get(0), 5);
 		sale.print();
 		sale = controller.endSale();
-		sale.print();
 		sale = controller.getDiscount(123);
 		sale.print();
 		Receipt receipt = controller.makePayment(45.0);
