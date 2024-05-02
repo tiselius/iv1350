@@ -100,9 +100,9 @@ public class Controller {
 	 * @return the sale
 	 */
 	public SaleDTO setQuantity(Item item, int quantity) {
-
 		sale.setQuantity(item, quantity);
-		return new SaleDTO(sale);
+		SaleDTO dto = new SaleDTO(sale);
+		return dto;
 	}
 
 	/**

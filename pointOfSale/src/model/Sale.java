@@ -51,7 +51,7 @@ public class Sale {
 	}
 
 	/**
-	 * 
+	 * Sets quantity and recalculates running total
 	 * @param item     the item to set the quantity of
 	 * @param quantity the quantity to set
 	 */
