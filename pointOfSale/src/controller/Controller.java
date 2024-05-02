@@ -37,7 +37,7 @@ public class Controller {
 
 
 	public SaleDTO getDiscount(int customerId) {
-		float discount = discountHandler.getDiscountAmount(customerId, sale);
+		Double discount = discountHandler.getDiscountAmount(customerId, sale);
 		sale.applyDiscount(discount);
 		sale.setCustomerId(customerId);
 
@@ -64,7 +64,7 @@ public class Controller {
 		return new SaleDTO(sale);
 	}
 
-	public Receipt makePayment(float cashPaid) {
+	public Receipt makePayment(Double cashPaid) {
 		Receipt receipt = new Receipt(new SaleDTO(sale), cashPaid);
 		accountingHandler.postReceipt(receipt);
 		inventoryHandler.postReceipt(receipt);

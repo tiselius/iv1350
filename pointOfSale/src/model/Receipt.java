@@ -6,14 +6,14 @@ import dto.SaleDTO;
 
 public class Receipt {
 
-	public float cashPaid;
+	public Double cashPaid;
 	public Date timeOfSale;
 	public SaleDTO saleDTO;
-	public float change;
-	public float totalVat;
-	public float amountToPay;
+	public Double change;
+	public Double totalVat;
+	public Double amountToPay;
 
-	public Receipt(SaleDTO sale, float cashPaid) {
+	public Receipt(SaleDTO sale, Double cashPaid) {
 		this.cashPaid = cashPaid;
 		this.timeOfSale = new Date();
 		this.saleDTO = sale;
@@ -23,10 +23,10 @@ public class Receipt {
 
 	}
 
-	private float itemsToVat(ArrayList<Item> items) {
-		totalVat = 0;
+	private Double itemsToVat(ArrayList<Item> items) {
+		totalVat = 0.0;
 		for (Item item : items) {
-			totalVat += ((double) item.getProduct().getVatRate() / 100)
+			totalVat += ( item.getProduct().getVatRate() / 100)
 					* (item.getQuantity() * item.getProduct().getPrice());
 		}
 		return totalVat;

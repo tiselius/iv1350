@@ -12,8 +12,8 @@ public class DiscountHandler {
 
   }
 
-  private float getItemsDiscount(ArrayList<Item> items) {
-    float discount = 0;
+  private double getItemsDiscount(ArrayList<Item> items) {
+    double discount = 0;
 
     for (Item item : items) {
       if (item.getProduct().getId() == 123) {
@@ -25,16 +25,16 @@ public class DiscountHandler {
     return discount;
   }
 
-  private float getDiscountOnEntireSale(float runningTotal) {
-    float discount = 0;
+  private double getDiscountOnEntireSale(double runningTotal) {
+    double discount = 0;
 
-    discount = (float) (runningTotal * 0.1);
+    discount = (double) (runningTotal * 0.1);
 
     return discount;
   }
 
-  private float getCustomerDiscountPercentage(int customerID) {
-    float discount = 0;
+  private double getCustomerDiscountPercentage(int customerID) {
+    double discount = 0;
 
     if (customerID == 123) {
       discount = 2;
@@ -44,16 +44,16 @@ public class DiscountHandler {
     return discount;
   }
 
-  public float getDiscountAmount(int customerID, Sale sale) {
+  public double getDiscountAmount(int customerID, Sale sale) {
 
-    float customerDiscount = (getCustomerDiscountPercentage(customerID) / 100) * sale.getRunningTotal();
+    double customerDiscount = (getCustomerDiscountPercentage(customerID) / 100) * sale.getRunningTotal();
     // System.out.println("The price is now: " + (sale.getRunningTotal() -
     // customerDiscount));
-    float itemDiscount = getItemsDiscount(sale.getItems());
+    double itemDiscount = getItemsDiscount(sale.getItems());
     // System.out.println("The price is now: " + (sale.getRunningTotal() -
     // customerDiscount - itemDiscount));
 
-    float saleDiscount = getDiscountOnEntireSale(sale.getRunningTotal());
+    double saleDiscount = getDiscountOnEntireSale(sale.getRunningTotal());
     /*
      * System.out
      * .println("The price is now: " + (sale.getRunningTotal() - customerDiscount -

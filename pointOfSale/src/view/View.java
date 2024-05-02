@@ -25,7 +25,7 @@ public class View {
 		sale.print();
 		sale = controller.getDiscount(123);
 		sale.print();
-		Receipt receipt = controller.makePayment(45);
+		Receipt receipt = controller.makePayment(45.0);
 
 		receipt.print();
 

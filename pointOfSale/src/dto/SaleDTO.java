@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class SaleDTO {
     private final ArrayList<Item> items;
-    private final float runningTotal;
+    private final Double runningTotal;
     private final boolean saleEnded;
     private final int customerId;
-    private final float discountAmount;
+    private final Double discountAmount;
 
     public SaleDTO(Sale sale) {
         this.items = sale.getItems();
@@ -23,7 +23,7 @@ public class SaleDTO {
         return items;
     }
 
-    public float getRunningTotal() {
+    public Double getRunningTotal() {
         return runningTotal;
     }
 
@@ -35,7 +35,7 @@ public class SaleDTO {
         return customerId;
     }
 
-    public float getDiscountAmount() {
+    public Double getDiscountAmount() {
         return discountAmount;
     }
 

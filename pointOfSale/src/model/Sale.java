@@ -6,10 +6,10 @@ import dto.ProductDTO;
 
 public class Sale {
 	ArrayList<Item> items = new ArrayList<Item>();
-	private float runningTotal = 0;
+	private Double runningTotal = 0.0;
 	private boolean saleEnded = false;
 	private int customerId;
-	private float discountAmount;
+	private Double discountAmount;
 
 	public void addProduct(ProductDTO product) {
 		Item item = getItem(product);
@@ -21,7 +21,7 @@ public class Sale {
 		calculateRunningTotal();
 	}
 
-	private Item getItem(ProductDTO product) {
+	protected Item getItem(ProductDTO product) {
 		for (Item item : items) {
 			if (item.getProduct().equals(product))
 				return item;
@@ -30,7 +30,7 @@ public class Sale {
 	}
 
 	private void calculateRunningTotal() {
-		this.runningTotal = 0;
+		runningTotal = 0.0;
 		for (Item item : items) {
 			this.runningTotal += item.getProduct().getPrice() * item.getQuantity(); // Borde vi ha en totalprice i item
 																					// som
@@ -45,11 +45,11 @@ public class Sale {
 
 	}
 
-	public float getDiscountAmount() {
-		return discountAmount;
+	public Double getDiscountAmount() {
+		return (Double) discountAmount;
 	}
 
-	public void applyDiscount(float discountAmount) {
+	public void applyDiscount(Double discountAmount) {
 		this.discountAmount = discountAmount;
 	}
 
@@ -61,7 +61,7 @@ public class Sale {
 		this.saleEnded = true;
 	}
 
-	public float getRunningTotal() {
+	public Double getRunningTotal() {
 		return runningTotal;
 	}
 
