@@ -4,14 +4,25 @@ import controller.Controller;
 import dto.SaleDTO;
 import model.Receipt;
 
+/**
+ * Renders the view
+ */
 public class View {
 
 	Controller controller;
 
+	/**
+	 * Creates a new instance of a View
+	 * 
+	 * @param controller
+	 */
 	public View(Controller controller) {
 		this.controller = controller;
 	}
 
+	/**
+	 * Runs the test
+	 */
 	public void test() {
 		controller.startSale();
 		SaleDTO sale = controller.inputProduct(123);
@@ -28,7 +39,6 @@ public class View {
 		Receipt receipt = controller.makePayment(45.0);
 
 		receipt.print();
-
 	}
 
 }

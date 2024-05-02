@@ -6,8 +6,14 @@ import dto.SaleDTO;
 import model.Item;
 import model.Sale;
 
+/**
+ * Handles the discount system
+ */
 public class DiscountHandler {
 
+  /**
+   * Creates a new instance of a discount handler. TODO implement
+   */
   public DiscountHandler() {
 
   }
@@ -44,21 +50,17 @@ public class DiscountHandler {
     return discount;
   }
 
+  /**
+   * Calculates the discount amount for a sale
+   * 
+   * @param customerID the id of the customer
+   * @param sale       the sale to calculate the discount for
+   * @return the discount amount
+   */
   public double getDiscountAmount(int customerID, Sale sale) {
-
     double customerDiscount = (getCustomerDiscountPercentage(customerID) / 100) * sale.getRunningTotal();
-    // System.out.println("The price is now: " + (sale.getRunningTotal() -
-    // customerDiscount));
     double itemDiscount = getItemsDiscount(sale.getItems());
-    // System.out.println("The price is now: " + (sale.getRunningTotal() -
-    // customerDiscount - itemDiscount));
-
     double saleDiscount = getDiscountOnEntireSale(sale.getRunningTotal());
-    /*
-     * System.out
-     * .println("The price is now: " + (sale.getRunningTotal() - customerDiscount -
-     * itemDiscount - saleDiscount));
-     */
 
     return customerDiscount + itemDiscount + saleDiscount;
 

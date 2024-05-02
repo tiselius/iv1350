@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import dto.ProductDTO;
 import model.Receipt;
 
+/**
+ * Handles the inventory system
+ */
 public class InventoryHandler {
 	ArrayList<ProductDTO> products = new ArrayList<ProductDTO>();
 
@@ -22,6 +25,11 @@ public class InventoryHandler {
 		return null;
 	}
 
+	/**
+	 * Updates the inventory system. TODO implement
+	 * 
+	 * @param receipt
+	 */
 	public void postReceipt(Receipt receipt) {
 		// TODO Auto-generated method stub
 

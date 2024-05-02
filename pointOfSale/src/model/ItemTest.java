@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import dto.ProductDTO;
 
 class ItemTest {
-	private ProductDTO testProduct; 
+	private ProductDTO testProduct;
 	private Item item;
 
 	@BeforeEach
@@ -29,37 +29,40 @@ class ItemTest {
 	@Test
 	void testItemNotNull() {
 		assertNotNull(item, "Expected that item was not null, but it was.");
-		}
+	}
 
 	@Test
 	void testQuantityEqualAfterIncrement() {
 		item.incrementQuantity();
 		int expectedAmount = 2;
-		assertEquals(item.getQuantity(), expectedAmount, "Expected that the quantity would be incremented to 2, but it was not.");
+		assertEquals(item.getQuantity(), expectedAmount,
+				"Expected that the quantity would be incremented to 2, but it was not.");
 	}
-	
+
 	@Test
 	void testQuantityNotEqualAfterIncrement() {
 		item.incrementQuantity();
 		int notExpectedAmount = 1;
-		assertNotEquals(item.getQuantity(), notExpectedAmount,  "Expected that the incremented quantity would be 2, but it was not.");
+		assertNotEquals(item.getQuantity(), notExpectedAmount,
+				"Expected that the incremented quantity would be 2, but it was not.");
 	}
-	
+
 	@Test
 	void testQuantityEqualAfterSet() {
 		int newQuantity = 0;
 		item.setQuantity(newQuantity);
 		int expectedAmount = 0;
-		assertEquals(item.getQuantity(), expectedAmount,  "Expected that the incremented quantity would be " + expectedAmount +  ", but it was " + item.getQuantity() );
+		assertEquals(item.getQuantity(), expectedAmount, "Expected that the incremented quantity would be "
+				+ expectedAmount + ", but it was " + item.getQuantity());
 	}
-	
+
 	@Test
 	void testQuantityNotEqualAfterSet() {
 		int newQuantity = 10;
 		item.setQuantity(newQuantity);
 		boolean result = item.getQuantity() != newQuantity;
 		boolean expectedResult = false;
-		assertEquals(result, expectedResult,  "Expected that the incremented quantity would be " + newQuantity +  ", but it was not.");
+		assertEquals(result, expectedResult,
+				"Expected that the incremented quantity would be " + newQuantity + ", but it was not.");
 	}
-
 }
