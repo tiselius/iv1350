@@ -29,8 +29,8 @@ class SaleTest {
 	}
 
 	@Test
-	void testItemNotNull() {
-		assertNotNull(sale, "Expected that item was not null, but it was.");
+	void testSaleNotNull() {
+		assertNotNull(sale, "Expected that sale was not null, but it was.");
 	}
 
 	@Test
