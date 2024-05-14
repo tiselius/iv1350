@@ -20,16 +20,23 @@ public class InventoryHandler {
 	}
 
 	/**
-	 * Searches the database and returns the product if it exists.
+	 * Searches the database and returns the product if it exists. throws exception
+	 * otherwise
+	 * 
 	 * @param id of the product to fetch.
-	 * @return ProductDTO, the ProductDTO to return. Is null if it does not exist.
+	 * @return ProductDTO, the ProductDTO to return.
+	 * @throws DBNotReachableException
 	 */
-	public ProductDTO getProduct(int id) {
+	public ProductDTO getProduct(int id) throws ItemNotValidException, DBNotReachableException {
+		if (id == 666) {
+			throw new DBNotReachableException("Product catalog is not reachable.");
+		}
 		for (ProductDTO product : this.products) {
 			if (product.getId() == id)
 				return product;
 		}
-		return null;
+
+		throw new ItemNotValidException("Product with number " + id + " was not found in the product catalog.");
 	}
 
 	/**

@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import dto.SaleDTO;
+import integration.ItemNotValidException;
 import model.Receipt;
 
 /**
@@ -24,19 +25,43 @@ public class View {
 	 * Runs a test execution of the program.
 	 */
 	public void test() {
-		controller.startSale();
-		SaleDTO sale = controller.inputProduct(123);
-		sale.print();
-		sale = controller.inputProduct(321);
-		sale.print();
-		sale = controller.setQuantity(sale.getItems().get(0), 5);
-		sale.print();
-		sale = controller.endSale();
-		sale = controller.getDiscount(123);
-		sale.print();
-		Receipt receipt = controller.makePayment(45.0);
+		SaleDTO sale = controller.startSale();
 
-		receipt.print();
+		try {
+			sale = inputProduct(123);
+			sale.print();
+			sale = inputProduct(8584893);
+			sale.print();
+			sale = inputProduct(321);
+			sale.print();
+
+			sale = inputProduct(666);
+			sale.print();
+
+			sale = controller.setQuantity(sale.getItems().get(0), 5);
+			sale.print();
+			sale = controller.endSale();
+			sale = controller.getDiscount(123);
+			sale.print();
+			Receipt receipt = controller.makePayment(45.0);
+
+			receipt.print();
+		} catch (Exception e) {
+			System.err.println("An unexpected error occured: " + e.getMessage());
+		}
+
+		sale.print();
+
 	}
 
+	SaleDTO inputProduct(int id) throws Exception {
+		try {
+			SaleDTO sale = controller.inputProduct(id);
+			return sale;
+		} catch (ItemNotValidException e) {
+			System.err.println(e.getMessage());
+			return controller.getSaleDTO();
+		}
+
+	}
 }

@@ -4,6 +4,7 @@ import dto.ProductDTO;
 import integration.AccountingHandler;
 import integration.DiscountHandler;
 import integration.InventoryHandler;
+import integration.ItemNotValidException;
 import integration.PrinterHandler;
 import model.Item;
 import model.Receipt;
@@ -43,8 +44,9 @@ public class Controller {
 	 * Starts a new sale
 	 */
 
-	public void startSale() {
+	public SaleDTO startSale() {
 		sale = new Sale();
+		return new SaleDTO(sale);
 	}
 
 	/**
@@ -81,7 +83,11 @@ public class Controller {
 	 * @return the sale
 	 */
 
-	public SaleDTO inputProduct(int id) {
+	public SaleDTO getSaleDTO() {
+		return new SaleDTO(this.sale);
+	}
+
+	public SaleDTO inputProduct(int id) throws Exception {
 		ProductDTO product = inventoryHandler.getProduct(id);
 
 		if (product == null) {
