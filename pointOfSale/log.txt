@@ -1,0 +1,36 @@
+15 May 2024, 13:58:20, Exception was thrown: Product with number 8584893 was not found in the product catalog.
+integration.ItemNotValidException: Product with number 8584893 was not found in the product catalog.
+	at pointOfSale/integration.InventoryHandler.getProduct(InventoryHandler.java:39)
+	at pointOfSale/controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/view.View.inputProduct(View.java:61)
+	at pointOfSale/view.View.test(View.java:35)
+	at pointOfSale/startup.Main.main(Main.java:21)
+
+
+15 May 2024, 13:58:20, Exception was thrown: Product catalog is not reachable.
+integration.DBNotReachableException: Product catalog is not reachable.
+	at pointOfSale/integration.InventoryHandler.getProduct(InventoryHandler.java:32)
+	at pointOfSale/controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/view.View.inputProduct(View.java:61)
+	at pointOfSale/view.View.test(View.java:40)
+	at pointOfSale/startup.Main.main(Main.java:21)
+
+
+15 May 2024, 13:58:45, Exception was thrown: Product with number 8584893 was not found in the product catalog.
+integration.ItemNotValidException: Product with number 8584893 was not found in the product catalog.
+	at pointOfSale/integration.InventoryHandler.getProduct(InventoryHandler.java:39)
+	at pointOfSale/controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/view.View.inputProduct(View.java:61)
+	at pointOfSale/view.View.test(View.java:35)
+	at pointOfSale/startup.Main.main(Main.java:21)
+
+
+15 May 2024, 13:58:45, Exception was thrown: Product catalog is not reachable.
+integration.DBNotReachableException: Product catalog is not reachable.
+	at pointOfSale/integration.InventoryHandler.getProduct(InventoryHandler.java:32)
+	at pointOfSale/controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/view.View.inputProduct(View.java:61)
+	at pointOfSale/view.View.test(View.java:40)
+	at pointOfSale/startup.Main.main(Main.java:21)
+
+

@@ -5,6 +5,7 @@ import dto.SaleDTO;
 import integration.DBNotReachableException;
 import integration.ItemNotValidException;
 import model.Receipt;
+import util.Logger;
 
 /**
  * Renders the view
@@ -48,10 +49,10 @@ public class View {
 
 			receipt.print();
 		} catch (Exception e) {
-			System.err.println("An unexpected error occured: " + e.getMessage());
+			printAndLogException(e);
 		}
 
-		sale.print();
+		// sale.print();
 
 	}
 
@@ -60,9 +61,15 @@ public class View {
 			SaleDTO sale = controller.inputProduct(id);
 			return sale;
 		} catch (ItemNotValidException | DBNotReachableException e) {
-			System.err.println(e.getMessage());
+			printAndLogException(e);
 			return controller.getSaleDTO();
 		}
 
+	}
+
+	public void printAndLogException(Exception e) {
+		System.err.println(e.getMessage());
+		Logger logger = new Logger();
+		logger.logException(e);
 	}
 }

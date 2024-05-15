@@ -3,10 +3,16 @@ package integration;
 /**
  * Exception for when the database is not reachable
  * 
- * params: errorMessage the error message to display
+ * 
  * 
  */
 public class DBNotReachableException extends Exception {
+
+    /**
+     * Creates an instance of DBNotReachableException
+     * 
+     * @param errorMessage the error message to display
+     */
     public DBNotReachableException(String errorMessage) {
         super(errorMessage);
     }
