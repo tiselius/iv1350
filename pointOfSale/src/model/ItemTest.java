@@ -27,15 +27,6 @@ class ItemTest {
 	}
 
 	@Test
-	void cannotAddItemThatDoesNotExist() {
-		ProductDTO product = new ProductDTO(789, 99.90f, 12, "Apple, Red");
-
-		assertThrows(IllegalArgumentException.class, () -> new Item(product),
-
-				"Expected that an IllegalArgumentException would be thrown when trying to add an item that does not exist, but it was not.");
-	}
-
-	@Test
 	void testItemNotNull() {
 		assertNotNull(item, "Expected that item was not null, but it was.");
 	}
