@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import dto.SaleDTO;
+import integration.DBNotReachableException;
 import integration.ItemNotValidException;
 import model.Receipt;
 
@@ -58,7 +59,7 @@ public class View {
 		try {
 			SaleDTO sale = controller.inputProduct(id);
 			return sale;
-		} catch (ItemNotValidException e) {
+		} catch (ItemNotValidException | DBNotReachableException e) {
 			System.err.println(e.getMessage());
 			return controller.getSaleDTO();
 		}
