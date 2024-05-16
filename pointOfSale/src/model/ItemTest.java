@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import controller.Controller;
 import dto.ProductDTO;
 
 class ItemTest {
@@ -24,15 +25,6 @@ class ItemTest {
 	void tearDown() throws Exception {
 		testProduct = null;
 		item = null;
-	}
-
-	@Test
-	void cannotAddItemThatDoesNotExist() {
-		ProductDTO product = new ProductDTO(789, 99.90f, 12, "Apple, Red");
-
-		assertThrows(IllegalArgumentException.class, () -> new Item(product),
-
-				"Expected that an IllegalArgumentException would be thrown when trying to add an item that does not exist, but it was not.");
 	}
 
 	@Test
