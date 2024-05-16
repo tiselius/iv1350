@@ -14,6 +14,8 @@ public class Sale {
 	private int customerId;
 	private Double discountAmount;
 
+	private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
+
 	/**
 	 * Adds a product to the sale
 	 * 
@@ -43,13 +45,14 @@ public class Sale {
 	private void calculateRunningTotal() {
 		runningTotal = 0.0;
 		for (Item item : items) {
-			this.runningTotal += item.getProduct().getPrice() * item.getQuantity(); 
+			this.runningTotal += item.getProduct().getPrice() * item.getQuantity();
 
 		}
 	}
 
 	/**
 	 * Sets quantity and recalculates running total
+	 * 
 	 * @param item     the item to set the quantity of
 	 * @param quantity the quantity to set
 	 */
@@ -136,6 +139,18 @@ public class Sale {
 	 */
 	public boolean getSaleEnded() {
 		return saleEnded;
+	}
+
+	public void addSaleObserver(SaleObserver observer) {
+		saleObservers.add(observer);
+	}
+
+	public void notifyObservers() {
+		System.out.println("hadok");
+		for (SaleObserver observer : saleObservers) {
+			System.out.println("hadok2");
+			observer.saleSubmitted(runningTotal);
+		}
 	}
 
 }

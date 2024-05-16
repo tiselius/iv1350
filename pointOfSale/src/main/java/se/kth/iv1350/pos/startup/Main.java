@@ -18,6 +18,9 @@ class Main {
 		DiscountHandler discountHandler = new DiscountHandler();
 		Controller controller = new Controller(inventoryHandler, accountingHandler, printerHandler, discountHandler);
 		View view = new View(controller);
-		view.test();
+		for (int i = 0; i < 1000; i++) {
+			view.test();
+		}
+
 	}
 }

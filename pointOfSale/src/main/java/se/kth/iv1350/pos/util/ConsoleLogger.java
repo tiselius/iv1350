@@ -23,9 +23,18 @@ public class ConsoleLogger {
         System.err.println(logMsgBuilder.toString());
     }
 
+    public void logTotalRevenue(Double totalRevenue) {
+        StringBuilder logMsgBuilder = new StringBuilder();
+        logMsgBuilder.append(createTime());
+        logMsgBuilder.append(", Total revenue after previous sale: ");
+        logMsgBuilder.append(totalRevenue);
+        System.out.println(logMsgBuilder.toString());
+    }
+
     private String createTime() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
         return now.format(formatter);
     }
+
 }

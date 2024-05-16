@@ -1,15 +1,17 @@
 package main.java.se.kth.iv1350.pos.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import main.java.se.kth.iv1350.pos.dto.ProductDTO;
+import main.java.se.kth.iv1350.pos.dto.SaleDTO;
 import main.java.se.kth.iv1350.pos.integration.AccountingHandler;
 import main.java.se.kth.iv1350.pos.integration.DiscountHandler;
 import main.java.se.kth.iv1350.pos.integration.InventoryHandler;
-import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
 import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
 import main.java.se.kth.iv1350.pos.model.Item;
 import main.java.se.kth.iv1350.pos.model.Receipt;
 import main.java.se.kth.iv1350.pos.model.Sale;
-import main.java.se.kth.iv1350.pos.dto.SaleDTO;
+import main.java.se.kth.iv1350.pos.model.SaleObserver;
 
 /**
  * Handles the communication between packages and classes
@@ -19,6 +21,8 @@ public class Controller {
 	private AccountingHandler accountingHandler;
 	private PrinterHandler printerHandler;
 	private DiscountHandler discountHandler;
+	private List<SaleObserver> saleObservers = new ArrayList<>();
+
 	/**
 	 * The current Sale that the Controller handles.
 	 */
@@ -46,6 +50,9 @@ public class Controller {
 
 	public SaleDTO startSale() {
 		sale = new Sale();
+		for (SaleObserver observer : saleObservers) {
+			sale.addSaleObserver(observer);
+		}
 		return new SaleDTO(sale);
 	}
 
@@ -57,6 +64,7 @@ public class Controller {
 
 	public SaleDTO endSale() {
 		sale.endSale();
+
 		return new SaleDTO(sale);
 
 	}
@@ -121,7 +129,12 @@ public class Controller {
 		inventoryHandler.postReceipt(receipt);
 		printerHandler.postReceipt(receipt);
 		System.out.println(receipt.toString());
+		sale.notifyObservers();
 		return receipt;
+	}
+
+	public void addObserverToSale(SaleObserver observer) {
+		saleObservers.add(observer);
 	}
 
 }
