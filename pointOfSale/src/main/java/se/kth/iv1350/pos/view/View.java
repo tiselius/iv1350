@@ -30,7 +30,6 @@ public class View {
 	public void test() {
 		SaleDTO sale = controller.startSale();
 
-		try {
 			sale = inputProduct(123);
 			sale.print();
 			sale = inputProduct(8584893);
@@ -49,15 +48,13 @@ public class View {
 			Receipt receipt = controller.makePayment(45.0);
 
 			receipt.print();
-		} catch (Exception e) {
-			printAndLogException(e);
-		}
+	
 
 		// sale.print();
 
 	}
 
-	SaleDTO inputProduct(int id) throws Exception {
+	SaleDTO inputProduct(int id) {
 		try {
 			SaleDTO sale = controller.inputProduct(id);
 			return sale;
@@ -65,11 +62,14 @@ public class View {
 			printAndLogException(e);
 			return controller.getSaleDTO();
 		}
+		catch (Exception generalException) {
+			printAndLogException(generalException);
+			return controller.getSaleDTO();
+		}
 
 	}
 
 	public void printAndLogException(Exception e) {
-		System.err.println(e.getMessage());
 		FileLogger fileLogger = new FileLogger();
 		ConsoleLogger consoleLogger = new ConsoleLogger();
 		fileLogger.logException(e);

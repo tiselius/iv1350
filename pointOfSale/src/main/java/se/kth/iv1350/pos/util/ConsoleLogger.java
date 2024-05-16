@@ -20,7 +20,7 @@ public class ConsoleLogger {
         logMsgBuilder.append(createTime());
         logMsgBuilder.append(", Exception was thrown: ");
         logMsgBuilder.append(exception.getMessage());
-        System.out.println(logMsgBuilder.toString());
+        System.err.println(logMsgBuilder.toString());
     }
 
     private String createTime() {

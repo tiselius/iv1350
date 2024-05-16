@@ -90,14 +90,8 @@ public class Controller {
 	public SaleDTO inputProduct(int id) throws Exception {
 		ProductDTO product = inventoryHandler.getProduct(id);
 
-		if (product == null) {
-			// throw new InvalidException("Product not found");
-			System.out.println("ERROR HERE"); // throw error
-		}
-
 		sale.addProduct(product);
 
-		System.out.println("Added: " + product.getName());
 		return new SaleDTO(sale);
 	}
 
