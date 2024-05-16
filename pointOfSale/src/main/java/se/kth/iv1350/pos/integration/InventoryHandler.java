@@ -1,9 +1,9 @@
-package integration;
+package main.java.se.kth.iv1350.pos.integration;
 
 import java.util.ArrayList;
 
-import dto.ProductDTO;
-import model.Receipt;
+import main.java.se.kth.iv1350.pos.dto.ProductDTO;
+import main.java.se.kth.iv1350.pos.model.Receipt;
 
 /**
  * Handles the inventory system

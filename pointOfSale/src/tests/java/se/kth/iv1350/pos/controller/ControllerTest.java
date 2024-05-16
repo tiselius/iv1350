@@ -1,4 +1,4 @@
-package controller;
+package tests.java.se.kth.iv1350.pos.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import integration.AccountingHandler;
-import integration.DiscountHandler;
-import integration.InventoryHandler;
-import integration.ItemNotValidException;
-import integration.PrinterHandler;
-import model.Item;
+import main.java.se.kth.iv1350.pos.controller.Controller;
+import main.java.se.kth.iv1350.pos.integration.AccountingHandler;
+import main.java.se.kth.iv1350.pos.integration.DiscountHandler;
+import main.java.se.kth.iv1350.pos.integration.InventoryHandler;
+import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
+import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
 
 class ControllerTest {
 	Controller controller;
@@ -41,6 +41,7 @@ class ControllerTest {
 
 				"Expected that an ItemNotValidException would be thrown when trying to add an item that does not exist, but it was not.");
 	}
+
 	@Test
 	void cannotAddItemThatDoesExist() {
 		int testID = 123;

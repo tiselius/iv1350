@@ -1,4 +1,4 @@
-package model;
+package main.java.se.kth.iv1350.pos.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dto.ProductDTO;
+import main.java.se.kth.iv1350.pos.dto.ProductDTO;
 
 class SaleTest {
 	Sale sale;

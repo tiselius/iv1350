@@ -1,4 +1,4 @@
-package dto;
+package main.java.se.kth.iv1350.pos.dto;
 
 /**
  * Represents an immutable product

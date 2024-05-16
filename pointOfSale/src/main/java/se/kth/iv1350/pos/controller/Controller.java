@@ -1,15 +1,15 @@
-package controller;
+package main.java.se.kth.iv1350.pos.controller;
 
-import dto.ProductDTO;
-import integration.AccountingHandler;
-import integration.DiscountHandler;
-import integration.InventoryHandler;
-import integration.ItemNotValidException;
-import integration.PrinterHandler;
-import model.Item;
-import model.Receipt;
-import model.Sale;
-import dto.SaleDTO;
+import main.java.se.kth.iv1350.pos.dto.ProductDTO;
+import main.java.se.kth.iv1350.pos.integration.AccountingHandler;
+import main.java.se.kth.iv1350.pos.integration.DiscountHandler;
+import main.java.se.kth.iv1350.pos.integration.InventoryHandler;
+import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
+import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
+import main.java.se.kth.iv1350.pos.model.Item;
+import main.java.se.kth.iv1350.pos.model.Receipt;
+import main.java.se.kth.iv1350.pos.model.Sale;
+import main.java.se.kth.iv1350.pos.dto.SaleDTO;
 
 /**
  * Handles the communication between packages and classes

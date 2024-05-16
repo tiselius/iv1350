@@ -1,4 +1,4 @@
-package util;
+package main.java.se.kth.iv1350.pos.util;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -11,14 +11,14 @@ import java.time.format.FormatStyle;
 /**
  * Logs exceptions to a file.
  */
-public class Logger {
+public class FileLogger {
     private PrintWriter logFile;
     private static final String LOG_FILE_NAME = "log.txt";
 
     /**
      * Creates a new instance of a Logger.
      */
-    public Logger() {
+    public FileLogger() {
         try {
             logFile = new PrintWriter(new FileWriter(LOG_FILE_NAME, true), true);
 
@@ -28,7 +28,8 @@ public class Logger {
     }
 
     /**
-     * Writes a log entry describing a thrown exception.
+     * Writes a log entry describing a thrown exception and writes it to a local
+     * file.
      * 
      * @param exception The exception that shall be logged.
      */

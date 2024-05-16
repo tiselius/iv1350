@@ -1,6 +1,6 @@
-package integration;
+package main.java.se.kth.iv1350.pos.integration;
 
-import model.Receipt;
+import main.java.se.kth.iv1350.pos.model.Receipt;
 
 /**
  * Handles the printer

@@ -1,11 +1,12 @@
-package view;
+package main.java.se.kth.iv1350.pos.view;
 
-import controller.Controller;
-import dto.SaleDTO;
-import integration.DBNotReachableException;
-import integration.ItemNotValidException;
-import model.Receipt;
-import util.Logger;
+import main.java.se.kth.iv1350.pos.controller.Controller;
+import main.java.se.kth.iv1350.pos.dto.SaleDTO;
+import main.java.se.kth.iv1350.pos.integration.DBNotReachableException;
+import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
+import main.java.se.kth.iv1350.pos.model.Receipt;
+import main.java.se.kth.iv1350.pos.util.FileLogger;
+import main.java.se.kth.iv1350.pos.util.ConsoleLogger;
 
 /**
  * Renders the view
@@ -69,7 +70,9 @@ public class View {
 
 	public void printAndLogException(Exception e) {
 		System.err.println(e.getMessage());
-		Logger logger = new Logger();
-		logger.logException(e);
+		FileLogger fileLogger = new FileLogger();
+		ConsoleLogger consoleLogger = new ConsoleLogger();
+		fileLogger.logException(e);
+		consoleLogger.logException(e);
 	}
 }

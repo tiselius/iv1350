@@ -1,10 +1,10 @@
-package integration;
+package main.java.se.kth.iv1350.pos.integration;
 
 import java.util.ArrayList;
 
-import dto.SaleDTO;
-import model.Item;
-import model.Sale;
+import main.java.se.kth.iv1350.pos.dto.SaleDTO;
+import main.java.se.kth.iv1350.pos.model.Item;
+import main.java.se.kth.iv1350.pos.model.Sale;
 
 /**
  * Handles the discount system

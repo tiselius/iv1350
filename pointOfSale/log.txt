@@ -34,3 +34,39 @@ integration.DBNotReachableException: Product catalog is not reachable.
 	at pointOfSale/startup.Main.main(Main.java:21)
 
 
+16 May 2024, 17:09:45, Exception was thrown: Product with number 8584893 was not found in the product catalog.
+main.java.se.kth.iv1350.pos.integration.ItemNotValidException: Product with number 8584893 was not found in the product catalog.
+	at pointOfSale/main.java.se.kth.iv1350.pos.integration.InventoryHandler.getProduct(InventoryHandler.java:39)
+	at pointOfSale/main.java.se.kth.iv1350.pos.controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.inputProduct(View.java:62)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.test(View.java:36)
+	at pointOfSale/main.java.se.kth.iv1350.pos.startup.Main.main(Main.java:21)
+
+
+16 May 2024, 17:09:45, Exception was thrown: Product catalog is not reachable.
+main.java.se.kth.iv1350.pos.integration.DBNotReachableException: Product catalog is not reachable.
+	at pointOfSale/main.java.se.kth.iv1350.pos.integration.InventoryHandler.getProduct(InventoryHandler.java:32)
+	at pointOfSale/main.java.se.kth.iv1350.pos.controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.inputProduct(View.java:62)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.test(View.java:41)
+	at pointOfSale/main.java.se.kth.iv1350.pos.startup.Main.main(Main.java:21)
+
+
+16 May 2024, 17:10:49, Exception was thrown: Product with number 8584893 was not found in the product catalog.
+main.java.se.kth.iv1350.pos.integration.ItemNotValidException: Product with number 8584893 was not found in the product catalog.
+	at pointOfSale/main.java.se.kth.iv1350.pos.integration.InventoryHandler.getProduct(InventoryHandler.java:39)
+	at pointOfSale/main.java.se.kth.iv1350.pos.controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.inputProduct(View.java:62)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.test(View.java:36)
+	at pointOfSale/main.java.se.kth.iv1350.pos.startup.Main.main(Main.java:21)
+
+
+16 May 2024, 17:10:49, Exception was thrown: Product catalog is not reachable.
+main.java.se.kth.iv1350.pos.integration.DBNotReachableException: Product catalog is not reachable.
+	at pointOfSale/main.java.se.kth.iv1350.pos.integration.InventoryHandler.getProduct(InventoryHandler.java:32)
+	at pointOfSale/main.java.se.kth.iv1350.pos.controller.Controller.inputProduct(Controller.java:91)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.inputProduct(View.java:62)
+	at pointOfSale/main.java.se.kth.iv1350.pos.view.View.test(View.java:41)
+	at pointOfSale/main.java.se.kth.iv1350.pos.startup.Main.main(Main.java:21)
+
+

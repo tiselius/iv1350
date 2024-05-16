@@ -1,8 +1,8 @@
-package startup;
+package main.java.se.kth.iv1350.pos.startup;
 
-import controller.*;
-import integration.*;
-import view.View;
+import main.java.se.kth.iv1350.pos.controller.*;
+import main.java.se.kth.iv1350.pos.integration.*;
+import main.java.se.kth.iv1350.pos.view.View;
 
 class Main {
 

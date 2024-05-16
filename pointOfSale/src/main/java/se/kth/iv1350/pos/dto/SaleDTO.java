@@ -1,7 +1,7 @@
-package dto;
+package main.java.se.kth.iv1350.pos.dto;
 
-import model.Sale;
-import model.Item;
+import main.java.se.kth.iv1350.pos.model.Sale;
+import main.java.se.kth.iv1350.pos.model.Item;
 import java.util.ArrayList;
 
 /**

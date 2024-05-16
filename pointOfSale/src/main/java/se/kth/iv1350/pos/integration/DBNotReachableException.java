@@ -1,4 +1,4 @@
-package integration;
+package main.java.se.kth.iv1350.pos.integration;
 
 /**
  * Exception for when the database is not reachable
