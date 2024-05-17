@@ -29,14 +29,14 @@ public class InventoryHandler {
 	 */
 	public ProductDTO getProduct(int id) throws ItemNotValidException, DBNotReachableException {
 		if (id == 666) {
-			throw new DBNotReachableException("Product catalog is not reachable.");
+			throw new DBNotReachableException("Product catalog is not reachable. ");
 		}
 		for (ProductDTO product : this.products) {
 			if (product.getId() == id)
 				return product;
 		}
 
-		throw new ItemNotValidException("Product with number " + id + " was not found in the product catalog.");
+		throw new ItemNotValidException("Product with number " + id + " was not found in the product catalog. ");
 	}
 
 	/**

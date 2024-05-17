@@ -10,7 +10,6 @@ public class TotalRevenueView implements SaleObserver {
     @Override
     public void saleSubmitted(Double totalPrice) {
         totalMoney += totalPrice;
-        System.out.println("Total revenue after previous sale: " + totalMoney + " SEK.");
         consoleLogger.logTotalRevenue(totalMoney);
     }
 

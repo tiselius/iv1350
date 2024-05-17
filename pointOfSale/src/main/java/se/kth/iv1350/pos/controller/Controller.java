@@ -5,8 +5,10 @@ import java.util.List;
 import main.java.se.kth.iv1350.pos.dto.ProductDTO;
 import main.java.se.kth.iv1350.pos.dto.SaleDTO;
 import main.java.se.kth.iv1350.pos.integration.AccountingHandler;
+import main.java.se.kth.iv1350.pos.integration.DBNotReachableException;
 import main.java.se.kth.iv1350.pos.integration.DiscountHandler;
 import main.java.se.kth.iv1350.pos.integration.InventoryHandler;
+import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
 import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
 import main.java.se.kth.iv1350.pos.model.Item;
 import main.java.se.kth.iv1350.pos.model.Receipt;
@@ -95,7 +97,7 @@ public class Controller {
 		return new SaleDTO(this.sale);
 	}
 
-	public SaleDTO inputProduct(int id) throws Exception {
+	public SaleDTO inputProduct(int id) throws ItemNotValidException, DBNotReachableException  {
 		ProductDTO product = inventoryHandler.getProduct(id);
 
 		sale.addProduct(product);

@@ -20,6 +20,7 @@ public class ConsoleLogger {
         logMsgBuilder.append(createTime());
         logMsgBuilder.append(", Exception was thrown: ");
         logMsgBuilder.append(exception.getMessage());
+//        logMsgBuilder.append(exception);
         System.err.println(logMsgBuilder.toString());
     }
 
@@ -28,6 +29,7 @@ public class ConsoleLogger {
         logMsgBuilder.append(createTime());
         logMsgBuilder.append(", Total revenue after previous sale: ");
         logMsgBuilder.append(totalRevenue);
+        logMsgBuilder.append("\n");
         System.out.println(logMsgBuilder.toString());
     }
 

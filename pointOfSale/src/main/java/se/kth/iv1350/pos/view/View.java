@@ -16,7 +16,8 @@ public class View {
 
 	Controller controller;
 	String fileName = "log.txt";
-	TotalRevenueView totalRevenueView = new TotalRevenueView();
+	FileLogger fileLogger; 
+	ConsoleLogger consoleLogger; 
 
 	/**
 	 * Creates a new instance of a View
@@ -25,6 +26,8 @@ public class View {
 	 */
 	public View(Controller controller) {
 		this.controller = controller;
+		fileLogger = new FileLogger(fileName);
+		consoleLogger = new ConsoleLogger();
 		controller.addObserverToSale(new TotalRevenueView());
 		controller.addObserverToSale(new TotalRevenueFileOutput());
 	}
@@ -33,6 +36,7 @@ public class View {
 	 * Runs a test execution of the program.
 	 */
 	public void test() {
+		try {
 		SaleDTO sale = controller.startSale();
 
 		sale = inputProduct(123);
@@ -57,6 +61,11 @@ public class View {
 		// sale.print();
 
 	}
+		catch (Exception generalException) {
+			printAndLogException(generalException);
+			System.exit(1);
+		}
+	}
 
 	SaleDTO inputProduct(int id) {
 		try {
@@ -64,17 +73,11 @@ public class View {
 			return sale;
 		} catch (ItemNotValidException | DBNotReachableException e) {
 			printAndLogException(e);
-			return controller.getSaleDTO();
-		} catch (Exception generalException) {
-			printAndLogException(generalException);
-			return controller.getSaleDTO();
-		}
-
+			return controller.getSaleDTO(); 
+		}	
 	}
 
 	public void printAndLogException(Exception e) {
-		FileLogger fileLogger = new FileLogger(fileName);
-		ConsoleLogger consoleLogger = new ConsoleLogger();
 		fileLogger.logException(e);
 		consoleLogger.logException(e);
 	}
