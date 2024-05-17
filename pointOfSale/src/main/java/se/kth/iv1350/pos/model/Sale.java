@@ -146,9 +146,7 @@ public class Sale {
 	}
 
 	public void notifyObservers() {
-		System.out.println("hadok");
 		for (SaleObserver observer : saleObservers) {
-			System.out.println("hadok2");
 			observer.saleSubmitted(runningTotal);
 		}
 	}
