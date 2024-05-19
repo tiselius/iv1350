@@ -62,7 +62,7 @@ public class View {
 
 	}
 		catch (Exception generalException) {
-			printAndLogException(generalException);
+			logException(generalException);
 			System.exit(1);
 		}
 	}
@@ -72,12 +72,12 @@ public class View {
 			SaleDTO sale = controller.inputProduct(id);
 			return sale;
 		} catch (ItemNotValidException | DBNotReachableException e) {
-			printAndLogException(e);
+			logException(e);
 			return controller.getSaleDTO(); 
 		}	
 	}
 
-	public void printAndLogException(Exception e) {
+	public void logException(Exception e) {
 		fileLogger.logException(e);
 		consoleLogger.logException(e);
 	}
