@@ -14,71 +14,70 @@ import main.java.se.kth.iv1350.pos.util.TotalRevenueFileOutput;
  */
 public class View {
 
-	Controller controller;
-	String fileName = "log.txt";
-	FileLogger fileLogger; 
-	ConsoleLogger consoleLogger; 
+  Controller controller;
+  String fileName = "log.txt";
+  FileLogger fileLogger;
+  ConsoleLogger consoleLogger;
 
-	/**
-	 * Creates a new instance of a View
-	 * 
-	 * @param controller
-	 */
-	public View(Controller controller) {
-		this.controller = controller;
-		fileLogger = new FileLogger(fileName);
-		consoleLogger = new ConsoleLogger();
-		controller.addObserverToSale(new TotalRevenueView());
-		controller.addObserverToSale(new TotalRevenueFileOutput());
-	}
+  /**
+   * Creates a new instance of a View
+   * 
+   * @param controller
+   */
+  public View(Controller controller) {
+    this.controller = controller;
+    fileLogger = new FileLogger(fileName);
+    consoleLogger = new ConsoleLogger();
+    controller.addObserverToSale(new TotalRevenueView());
+    controller.addObserverToSale(new TotalRevenueFileOutput());
+  }
 
-	/**
-	 * Runs a test execution of the program.
-	 */
-	public void test() {
-		try {
-		SaleDTO sale = controller.startSale();
+  /**
+   * Runs a test execution of the program.
+   */
+  public void test() {
+    try {
+      SaleDTO sale = controller.startSale();
 
-		sale = inputProduct(123);
-		sale.print();
-		sale = inputProduct(8584893);
-		sale.print();
-		sale = inputProduct(321);
-		sale.print();
+      sale = inputProduct(123);
+      sale.print();
+      sale = inputProduct(8584893);
+      sale.print();
+      sale = inputProduct(321);
+      sale.print();
 
-		sale = inputProduct(666);
-		sale.print();
+      sale = inputProduct(666);
+      sale.print();
+      sale = controller.setQuantity(123, 5);
+      // sale = controller.setQuantity(sale.getItems().get(0), 5);
+      sale.print();
+      sale = controller.endSale();
+      sale = controller.getDiscount(123);
+      sale.print();
+      Receipt receipt = controller.makePayment(45.0);
 
-		sale = controller.setQuantity(sale.getItems().get(0), 5);
-		sale.print();
-		sale = controller.endSale();
-		sale = controller.getDiscount(123);
-		sale.print();
-		Receipt receipt = controller.makePayment(45.0);
+      receipt.print();
 
-		receipt.print();
+      // sale.print();
 
-		// sale.print();
+    } catch (Exception generalException) {
+      logException(generalException);
+      System.exit(1);
+    }
+  }
 
-	}
-		catch (Exception generalException) {
-			logException(generalException);
-			System.exit(1);
-		}
-	}
+  SaleDTO inputProduct(int id) {
+    try {
+      SaleDTO sale = controller.inputProduct(id);
+      return sale;
+    } catch (ItemNotValidException | DBNotReachableException e) {
+      logException(e);
+      return controller.getSaleDTO();
+    }
+  }
 
-	SaleDTO inputProduct(int id) {
-		try {
-			SaleDTO sale = controller.inputProduct(id);
-			return sale;
-		} catch (ItemNotValidException | DBNotReachableException e) {
-			logException(e);
-			return controller.getSaleDTO(); 
-		}	
-	}
-
-	public void logException(Exception e) {
-		fileLogger.logException(e);
-		consoleLogger.logException(e);
-	}
+  public void logException(Exception e) {
+    fileLogger.logException(e);
+    consoleLogger.logException(e);
+  }
 }

@@ -64,6 +64,28 @@ public class Sale {
 	}
 
 	/**
+	 * Sets quantity by id and recalculates running total
+	 * 
+	 * @param itemId   the itemId to set the quantity of
+	 * @param quantity the quantity to set
+	 */
+
+	public void setQuantityById(int itemId, int quantity) {
+		Item item = null;
+		for (Item i : items) {
+			if (i.getProduct().getId() == itemId) {
+				item = i;
+				break;
+			}
+		}
+		if (item == null) {
+			return;
+		}
+		item.setQuantity(quantity);
+		this.calculateRunningTotal();
+	}
+
+	/**
 	 * 
 	 * @return the total price of the sale
 	 */

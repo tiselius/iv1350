@@ -1,8 +1,8 @@
 package main.java.se.kth.iv1350.pos.dto;
 
-import main.java.se.kth.iv1350.pos.model.Sale;
-import main.java.se.kth.iv1350.pos.model.Item;
 import java.util.ArrayList;
+import main.java.se.kth.iv1350.pos.model.Item;
+import main.java.se.kth.iv1350.pos.model.Sale;
 
 /**
  * Represents an immutable sale
@@ -20,11 +20,21 @@ public class SaleDTO {
      * @param sale
      */
     public SaleDTO(Sale sale) {
-        this.items = sale.getItems();
+        this.items = copyItems(sale.getItems());
         this.runningTotal = sale.getRunningTotal();
         this.saleEnded = sale.getSaleEnded();
         this.customerId = sale.getCustomerId();
         this.discountAmount = sale.getDiscountAmount();
+    }
+
+    // This method is used to create a copy, so that the original list can't be
+    // changed. For example the View cant change quantity directly.
+    private ArrayList<Item> copyItems(ArrayList<Item> items) {
+        ArrayList<Item> itemsCopy = new ArrayList<>();
+        for (Item item : items) {
+            itemsCopy.add(new Item(item.getProduct(), item.getQuantity()));
+        }
+        return itemsCopy;
     }
 
     /**

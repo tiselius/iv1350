@@ -10,7 +10,6 @@ import main.java.se.kth.iv1350.pos.integration.DiscountHandler;
 import main.java.se.kth.iv1350.pos.integration.InventoryHandler;
 import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
 import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
-import main.java.se.kth.iv1350.pos.model.Item;
 import main.java.se.kth.iv1350.pos.model.Receipt;
 import main.java.se.kth.iv1350.pos.model.Sale;
 import main.java.se.kth.iv1350.pos.model.SaleObserver;
@@ -97,7 +96,7 @@ public class Controller {
 		return new SaleDTO(this.sale);
 	}
 
-	public SaleDTO inputProduct(int id) throws ItemNotValidException, DBNotReachableException  {
+	public SaleDTO inputProduct(int id) throws ItemNotValidException, DBNotReachableException {
 		ProductDTO product = inventoryHandler.getProduct(id);
 
 		sale.addProduct(product);
@@ -108,12 +107,12 @@ public class Controller {
 	/**
 	 * Sets the quantity of an item
 	 * 
-	 * @param item     the item to set the quantity of
+	 * @param itemId   the itemId to set the quantity of
 	 * @param quantity the quantity to set
 	 * @return the sale
 	 */
-	public SaleDTO setQuantity(Item item, int quantity) {
-		sale.setQuantity(item, quantity);
+	public SaleDTO setQuantity(int itemId, int quantity) {
+		sale.setQuantityById(itemId, quantity);
 		SaleDTO dto = new SaleDTO(sale);
 		return dto;
 	}
