@@ -14,8 +14,6 @@ public class Sale {
 	private int customerId;
 	private Double discountAmount;
 
-	private ArrayList<SaleObserver> saleObservers = new ArrayList<SaleObserver>();
-
 	/**
 	 * Adds a product to the sale
 	 * 
@@ -162,15 +160,5 @@ public class Sale {
 	public boolean getSaleEnded() {
 		return saleEnded;
 	}
-
-	public void addSaleObserver(SaleObserver observer) {
-		saleObservers.add(observer);
-	}
-
-	public void notifyObservers() {
-		for (SaleObserver observer : saleObservers) {
-			observer.saleSubmitted(runningTotal);
-		}
-	}
-
 }
+

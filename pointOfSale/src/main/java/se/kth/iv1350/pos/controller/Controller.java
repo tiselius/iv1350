@@ -12,7 +12,7 @@ import main.java.se.kth.iv1350.pos.integration.ItemNotValidException;
 import main.java.se.kth.iv1350.pos.integration.PrinterHandler;
 import main.java.se.kth.iv1350.pos.model.Receipt;
 import main.java.se.kth.iv1350.pos.model.Sale;
-import main.java.se.kth.iv1350.pos.model.SaleObserver;
+import main.java.se.kth.iv1350.pos.model.ReceiptObserver;
 
 /**
  * Handles the communication between packages and classes
@@ -22,7 +22,7 @@ public class Controller {
 	private AccountingHandler accountingHandler;
 	private PrinterHandler printerHandler;
 	private DiscountHandler discountHandler;
-	private List<SaleObserver> saleObservers = new ArrayList<>();
+	private List<ReceiptObserver> receiptObservers = new ArrayList<>();
 
 	/**
 	 * The current Sale that the Controller handles.
@@ -51,9 +51,6 @@ public class Controller {
 
 	public SaleDTO startSale() {
 		sale = new Sale();
-		for (SaleObserver observer : saleObservers) {
-			sale.addSaleObserver(observer);
-		}
 		return new SaleDTO(sale);
 	}
 
@@ -125,17 +122,16 @@ public class Controller {
 	 * @return the receipt
 	 */
 	public Receipt makePayment(Double cashPaid) {
-		Receipt receipt = new Receipt(new SaleDTO(sale), cashPaid);
+		Receipt receipt = new Receipt(new SaleDTO(sale), cashPaid, receiptObservers);
 		accountingHandler.postReceipt(receipt);
 		inventoryHandler.postReceipt(receipt);
 		printerHandler.postReceipt(receipt);
 		System.out.println(receipt.toString());
-		sale.notifyObservers();
 		return receipt;
 	}
 
-	public void addObserverToSale(SaleObserver observer) {
-		saleObservers.add(observer);
+	public void addObserverToReceipt(ReceiptObserver observer) {
+		receiptObservers.add(observer);
 	}
 
 }
